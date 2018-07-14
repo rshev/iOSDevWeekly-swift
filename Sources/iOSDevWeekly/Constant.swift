@@ -8,9 +8,11 @@
 import Foundation
 
 enum Constant {
+    static let configFilename = "config.json"
+    static let lastKnownGuidFilename = ".lastKnownGuid"
+
     static let feedUrl = URL(string: "https://iosdevweekly.com/issues.rss")!
     static let linksRegex = try! NSRegularExpression(pattern: "<h4><a href=\"(.*)\">(.*)</a></h4>", options: [])
-    static let lastKnownGuidFilename = ".lastKnownGuid"
 
     enum Instapaper {
         static let apiAddUrl = URL(string: "https://www.instapaper.com/api/add")!
