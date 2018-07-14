@@ -8,6 +8,10 @@
 import Foundation
 
 struct Config: Codable {
+    let credentials: [Credentials]
+}
+
+struct Credentials: Codable {
     let target: Target
     let consumer: String
     let secret: String
