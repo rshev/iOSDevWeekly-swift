@@ -1,7 +1,17 @@
 import Foundation
 
-let currentDirectoryUrl = Bundle.main.executableURL?.deletingLastPathComponent() ?? URL(fileURLWithPath: "./", isDirectory: true)
-let configUrl = currentDirectoryUrl.appendingPathComponent(Constant.configFilename)
+var commandLineArguments = CommandLine.arguments.dropFirst()
+
+let configUrl: URL
+if
+    let cmdlineArgument = commandLineArguments.first,
+    FileManager.default.isReadableFile(atPath: cmdlineArgument)
+{
+    configUrl = URL(fileURLWithPath: cmdlineArgument)
+} else {
+    let currentDirectoryUrl = Bundle.main.executableURL?.deletingLastPathComponent() ?? URL(fileURLWithPath: "./", isDirectory: true)
+    configUrl = currentDirectoryUrl.appendingPathComponent(Constant.configFilename)
+}
 
 do {
     let data = try Data(contentsOf: configUrl)
@@ -10,6 +20,7 @@ do {
     feedParser.start()
 } catch {
     print("""
+            Usage: config.json as the first argument, otherwise looks for it in the current executable directory.
             Error reading config file at \(configUrl).
             Error thrown: \(error.localizedDescription)
           """
