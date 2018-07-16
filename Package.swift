@@ -1,4 +1,4 @@
-// swift-tools-version:4.2
+// swift-tools-version:4.1
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "iOSDevWeekly",
     dependencies: [
-        .package(url: "https://github.com/nmdias/FeedKit.git", from: "8.0.0"),
+        .package(url: "https://github.com/nmdias/FeedKit.git", from: "7.1.0"),
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
     ],
