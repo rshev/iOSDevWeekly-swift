@@ -17,7 +17,7 @@ private func main() {
         let data = try Data(contentsOf: configUrl)
         let config = try JSONDecoder().decode(Config.self, from: data)
         let feedParser = FeedParser(config: config)
-        feedParser.start()
+        try feedParser.start()
     } catch {
         print("""
                 Usage: config.json as the first argument, otherwise looks for it in the current executable directory.
